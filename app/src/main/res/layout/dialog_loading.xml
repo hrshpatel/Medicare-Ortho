@@ -17,7 +17,7 @@
         app:cpv_indeterminate="true"
         app:cpv_thickness="4dp" />
 
-    <TextView
+    <com.ortho.medicare.medicareortho.customviews.CustomTextView
         android:id="@+id/tv_loding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

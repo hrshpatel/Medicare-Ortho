@@ -13,13 +13,14 @@ import android.widget.TextView;
 
 import com.ortho.medicare.medicareortho.R;
 import com.ortho.medicare.medicareortho.customviews.CirculerProgressView;
+import com.ortho.medicare.medicareortho.customviews.CustomTextView;
 
 public class LoadingDialog {
 
     public Dialog mDialog;
     CirculerProgressView progressBar;
     Thread updateThread;
-    TextView tv_loading;
+    CustomTextView tv_loading;
     private Context context;
     View view;
     private boolean isLDShow = false;
@@ -66,7 +67,7 @@ public class LoadingDialog {
     }
 
     private void hideLoadingDialog() {
-        tv_loading = (TextView) view.findViewById(R.id.tv_loding);
+        tv_loading = (CustomTextView) view.findViewById(R.id.tv_loding);
         isLDShow = false;
         if (mDialog != null) {
             tv_loading.setVisibility(View.GONE);
@@ -117,7 +118,7 @@ public class LoadingDialog {
                 R.layout.dialog_loading, null);
         progressBar = (CirculerProgressView) view.findViewById(R.id.progressBar1);
         startAnimationThreadStuff(1000);
-        tv_loading = (TextView) view.findViewById(R.id.tv_loding);
+        tv_loading = (CustomTextView) view.findViewById(R.id.tv_loding);
         if (text) {
             tv_loading.setVisibility(View.VISIBLE);
             tv_loading.setText(text_to_Set);

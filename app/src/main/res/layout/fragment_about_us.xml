@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
+            <com.ortho.medicare.medicareortho.customviews.CustomTextView
                 android:id="@+id/frg_about_txt_overview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/black" />
 
-            <TextView
+            <com.ortho.medicare.medicareortho.customviews.CustomTextView
                 android:id="@+id/frg_about_txt_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

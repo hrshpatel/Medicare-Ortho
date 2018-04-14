@@ -9,13 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.ortho.medicare.medicareortho.R;
+import com.ortho.medicare.medicareortho.customviews.CustomTextView;
+import com.ortho.medicare.medicareortho.mailutils.SendMailAsync;
+import com.ortho.medicare.medicareortho.utils.CommonUtil;
+import com.ortho.medicare.medicareortho.utils.ProgressDialogUtil;
+import com.ortho.medicare.medicareortho.utils.ToastUtils;
 
 public class InquiryFragment extends Fragment implements View.OnClickListener {
 
-    private TextView mToolBarTitle;
+    private CustomTextView mToolBarTitle;
     private TextInputEditText mEdtName;
     private TextInputEditText mEdtAddress;
     private TextInputEditText mEdtCity;
@@ -61,7 +65,7 @@ public class InquiryFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initializeView(View view) {
-        mToolBarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        mToolBarTitle = (CustomTextView) getActivity().findViewById(R.id.toolbar_title);
 
         mToolBarTitle.setText(R.string.str_inquiry);
 
@@ -85,6 +89,40 @@ public class InquiryFragment extends Fragment implements View.OnClickListener {
 
     private void validateData() {
 
+        String email = mEdtEmail.getText().toString();
+        String name = mEdtName.getText().toString();
+        String remark = mEdtRemark.getText().toString();
+
+        if (CommonUtil.isNullString(email)) {
+            ToastUtils.makeText(getActivity(), "Enter email address.");
+        } else if (!CommonUtil.checkEmail(email)) {
+            ToastUtils.makeText(getActivity(), "Enter valid email address.");
+        } else if (CommonUtil.isNullString(name)) {
+            ToastUtils.makeText(getActivity(), "Enter name.");
+        } else if (CommonUtil.isNullString(remark)) {
+            ToastUtils.makeText(getActivity(), "Enter remarks.");
+        } else {
+            ProgressDialogUtil.showProgress(getActivity(), "", "", false);
+            try {
+                String body = "Hello " + mEdtName.getText().toString()
+                        + ",\nYour filled details is as follows."
+                        + "\n\nName - " + name
+                        + "\nEmail - " + email
+                        + "\nAddress - " + mEdtAddress.getText()
+                        + "\nCity - " + mEdtCity.getText()
+                        + "\nState - " + mEdtState.getText()
+                        + "\nCountry - " + mEdtCountry.getText()
+                        + "\nPinCode - " + mEdtPinCode.getText()
+                        + "\nContact - " + mEdtPhone.getText()
+                        + "\nRemarks - " + remark
+                        + "\n\nThank you,\nTeam MedicareOrtho";
+                new SendMailAsync(getActivity(), mEdtEmail.getText().toString()
+                        , mEdtName.getText().toString(), body).execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+                ProgressDialogUtil.dismissProgress();
+            }
+        }
     }
 
 }

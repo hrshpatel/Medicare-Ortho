@@ -47,6 +47,8 @@ public class Constant {
         private static String BASE_URL = "http://aquaflexinks.in/medicareortho/api/";
 
         public static String ABOUT_US = BASE_URL + "about_us";
+        public static String CONTACT_US = BASE_URL + "contact";
+        public static String PRODUCT_LIST = BASE_URL + "product_list";
     }
 
 }

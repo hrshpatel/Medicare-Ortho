@@ -31,5 +31,12 @@
     <string name="str_hint_remark">Remark</string>
     <string name="str_inquiry">Inquiry</string>
     <string name="str_submit">Submit</string>
+    <string name="app_key_ws">da85d87b84495e41e24a55ea05bc7247</string>
+    <string name="office_address">Office Address:</string>
+    <string name="phone_number">Phone Number:</string>
+    <string name="mobile_number">Mobile Number:</string>
+    <string name="email_id">Email Id:</string>
+    <string name="website">Website:</string>
+    <string name="str_contact_us">Contact</string>
 
 </resources>

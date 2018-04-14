@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ortho.medicare.medicareortho.R;
+import com.ortho.medicare.medicareortho.customviews.CustomTextView;
 import com.ortho.medicare.medicareortho.helpers.LoadingDialog;
 import com.ortho.medicare.medicareortho.utils.AppLog;
 import com.ortho.medicare.medicareortho.utils.CommonUtil;
@@ -286,7 +287,7 @@ public class ServiceHandler extends AsyncTask<Void, Void, Boolean> {
         android.support.v7.app.AlertDialog alertDialog = builder.show();
 
 
-        TextView txtMsg = (TextView) alertDialog.findViewById(android.R.id.message);
+        CustomTextView txtMsg = (CustomTextView) alertDialog.findViewById(android.R.id.message);
         //TextView txtTitle = (TextView) alertDialog.findViewById(android.R.id.);
 
 

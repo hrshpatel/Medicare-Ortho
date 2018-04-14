@@ -41,6 +41,9 @@ import java.util.regex.Pattern;
  */
 public class CommonUtil {
 
+    public static final String USERNAME = "medicareorthoapk@gmail.com";
+    public static String PASSWORD = "medicare123#";
+
     public final static int ADD_CANINE_RESULT = 121;
     public final static int EDIT_PROFILE_RESULT = 122;
     public final static int SCHEDULE_LIST_RESULT = 123;

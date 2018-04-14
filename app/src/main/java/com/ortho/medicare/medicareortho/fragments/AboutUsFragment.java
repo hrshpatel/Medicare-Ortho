@@ -9,11 +9,11 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ortho.medicare.medicareortho.R;
+import com.ortho.medicare.medicareortho.customviews.CustomTextView;
 import com.ortho.medicare.medicareortho.responsehandlers.AboutUsResponse;
 import com.ortho.medicare.medicareortho.utils.AppLog;
 import com.ortho.medicare.medicareortho.utils.CommonUtil;
@@ -24,9 +24,9 @@ import com.ortho.medicare.medicareortho.webserviceutils.ServiceHandler;
 
 public class AboutUsFragment extends Fragment implements ServiceHandler.GetResponse {
 
-    private TextView mTxtDescription;
-    private TextView mTxtOverview;
-    private TextView mToolBarTitle;
+    private CustomTextView mTxtDescription;
+    private CustomTextView mTxtOverview;
+    private CustomTextView mToolBarTitle;
 
     public AboutUsFragment() {
 
@@ -60,17 +60,17 @@ public class AboutUsFragment extends Fragment implements ServiceHandler.GetRespo
     }
 
     private void initializeView(View view) {
-        mTxtOverview = (TextView) view.findViewById(R.id.frg_about_txt_overview);
-        mTxtDescription = (TextView) view.findViewById(R.id.frg_about_txt_desc);
+        mTxtOverview = (CustomTextView) view.findViewById(R.id.frg_about_txt_overview);
+        mTxtDescription = (CustomTextView) view.findViewById(R.id.frg_about_txt_desc);
 
-        mToolBarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        mToolBarTitle = (CustomTextView) getActivity().findViewById(R.id.toolbar_title);
 
         mToolBarTitle.setText(R.string.str_about_us);
     }
 
     private void callAboutUsWs() {
         ServiceHandler serviceHandler = new ServiceHandler(getActivity(), Constant.Type.post
-                , Constant.Urls.ABOUT_US, RequestParams.getAboutUsBody(), true, 0);
+                , Constant.Urls.ABOUT_US, RequestParams.getAboutUsBody(getActivity()), true, 0);
         serviceHandler.delegate = this;
         serviceHandler.execute();
     }
@@ -104,14 +104,12 @@ public class AboutUsFragment extends Fragment implements ServiceHandler.GetRespo
                         }
                     }
                 } else {
-                    ToastUtils.makeText(getActivity(), "" + aboutUsResponse.getMsg()
-                            , Toast.LENGTH_SHORT);
+                    ToastUtils.makeText(getActivity(), "" + aboutUsResponse.getMsg());
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
-            ToastUtils.makeText(getActivity(), getString(R.string.str_something_went_worng)
-                    , Toast.LENGTH_SHORT);
+            ToastUtils.makeText(getActivity(), getString(R.string.str_something_went_worng));
         }
     }
 

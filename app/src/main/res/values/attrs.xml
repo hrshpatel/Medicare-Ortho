@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="font_type" format="enum">
+        <enum name="bold" value="0" />
+        <enum name="regular" value="2" />
+        <enum name="black" value="3"/>
+        <enum name="semi_bold" value="6"/>
+    </attr>
+    <declare-styleable name="CustomTextView">
+        <attr name="font_type" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomEditText">
+        <attr name="font_type" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomAutoCompleteEditText">
+        <attr name="font_type" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomButton">
+        <attr name="font_type" />
+    </declare-styleable>
+
     <declare-styleable name="CircularProgressView">
         <attr name="cpv_progress" format="float" />
         <attr name="cpv_maxProgress" format="float" />

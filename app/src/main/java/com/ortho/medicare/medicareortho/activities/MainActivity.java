@@ -24,7 +24,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ortho.medicare.medicareortho.R;
+import com.ortho.medicare.medicareortho.customviews.CustomTextView;
 import com.ortho.medicare.medicareortho.fragments.AboutUsFragment;
+import com.ortho.medicare.medicareortho.fragments.ContactFragment;
 import com.ortho.medicare.medicareortho.fragments.InquiryFragment;
 import com.ortho.medicare.medicareortho.utils.CommonUtil;
 
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar mToolbar;
-    private TextView toolbar_title;
+    private CustomTextView toolbar_title;
     private DrawerLayout mDrawerLayout;
     private CoordinatorLayout mMainView;
 
@@ -98,7 +100,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_inquiry) {
             replaceFragment(InquiryFragment.newInstance());
         } else if (id == R.id.nav_contact) {
-
+            replaceFragment(ContactFragment.newInstance());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -116,7 +118,7 @@ public class MainActivity extends AppCompatActivity
 
         CommonUtil.hideSoftKeyboard(MainActivity.this);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+        toolbar_title = (CustomTextView) findViewById(R.id.toolbar_title);
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
