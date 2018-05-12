@@ -39,7 +39,7 @@ public class SendMailAsync extends AsyncTask<String, Integer, Void> {
     protected Void doInBackground(String... params) {
         Mail m = new Mail(CommonUtil.USERNAME, CommonUtil.PASSWORD);
 
-        String[] toArr = {receiverMail};
+        String[] toArr = {receiverMail, "medicareortho@yahoo.com", "gimonkar@gmail.com"};
         m.setTo(toArr);
         m.setFrom(CommonUtil.USERNAME);
         m.setSubject("Thank you for filling Inquiry Form.");

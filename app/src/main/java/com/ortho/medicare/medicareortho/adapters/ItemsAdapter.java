@@ -61,7 +61,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemHolder> 
         }
 
         if (!CommonUtil.isNullString(productDetailsArrayList.get(position).getPrice())) {
-            holder.itemPrice.setText(productDetailsArrayList.get(position).getPrice());
+            holder.itemPrice.setText(productDetailsArrayList.get(position).getPrice()
+                    + " " + mActivity.getString(R.string.rupee));
             holder.itemPrice.setVisibility(View.VISIBLE);
         } else {
             holder.itemPrice.setVisibility(View.GONE);

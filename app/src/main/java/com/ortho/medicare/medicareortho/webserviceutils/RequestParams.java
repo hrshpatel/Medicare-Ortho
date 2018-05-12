@@ -14,16 +14,10 @@ public class RequestParams {
                 .build();
     }
 
-    public static RequestBody getDetailsBody(Activity activity , String id) {
+    public static RequestBody getDetailsBody(Activity activity, String id) {
         return new FormEncodingBuilder()
                 .add(Constant.WebServicesKeys.mAppKey, activity.getString(R.string.app_key_ws))
-                .add(Constant.WebServicesKeys.mId , id)
-                .build();
-    }
-
-    public static RequestBody getProductListBody(Activity activity) {
-        return new FormEncodingBuilder()
-                .add(Constant.WebServicesKeys.mAppKey, activity.getString(R.string.app_key_ws))
+                .add(Constant.WebServicesKeys.mId, id)
                 .build();
     }
 

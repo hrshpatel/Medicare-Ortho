@@ -51,6 +51,7 @@ public class Constant {
         public static String CONTACT_US = BASE_URL + "contact";
         public static String PRODUCT_LIST = BASE_URL + "product_list";
         public static String PRODUCT_DETAIL = BASE_URL + "product_detail";
+        public static String QUALITY = BASE_URL + "quality";
     }
 
 }
