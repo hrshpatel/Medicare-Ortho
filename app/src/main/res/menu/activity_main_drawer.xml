@@ -4,13 +4,14 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="Home" />
-        <item
-            android:id="@+id/nav_about_us"
-            android:title="About Us" />
+            android:title="Home"
+            android:visible="false" />
         <item
             android:id="@+id/nav_products"
             android:title="Products" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:title="About Us" />
         <item
             android:id="@+id/nav_quality"
             android:title="Quality" />

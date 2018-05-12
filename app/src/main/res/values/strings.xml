@@ -38,5 +38,13 @@
     <string name="email_id">Email Id:</string>
     <string name="website">Website:</string>
     <string name="str_contact_us">Contact</string>
+    <string name="no_categories_found">No categories found</string>
+    <string name="no_products_found">No Products Found</string>
+    <string name="sr_no">Sr. No.</string>
+    <string name="size">Size</string>
+    <string name="name">Name</string>
+    <string name="str_products">Products</string>
+    <string name="str_product_details">Product Details</string>
+    <string name="price">Price</string>
 
 </resources>

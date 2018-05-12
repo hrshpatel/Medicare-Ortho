@@ -19,6 +19,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.ortho.medicare.medicareortho.R;
 
 import java.io.ByteArrayOutputStream;
@@ -239,7 +240,13 @@ public class CommonUtil {
      * @param imageView
      * @param imageUri
      */
-    public static void loadImage(Activity activity, ImageView imageView, String imageUri, int placeHolder) {
+    public static void loadImage(Activity activity, ImageView imageView
+            , String imageUri, int placeHolder) {
+        Glide.with(activity)
+                .load(imageUri)
+                .placeholder(placeHolder)
+                .dontAnimate()
+                .into(imageView);
     }
 
     /**

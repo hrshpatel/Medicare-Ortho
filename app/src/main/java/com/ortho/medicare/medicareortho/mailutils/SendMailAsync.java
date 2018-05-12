@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.ortho.medicare.medicareortho.utils.AppLog;
 import com.ortho.medicare.medicareortho.utils.CommonUtil;
 import com.ortho.medicare.medicareortho.utils.ProgressDialogUtil;
 import com.ortho.medicare.medicareortho.utils.ToastUtils;
@@ -62,7 +63,7 @@ public class SendMailAsync extends AsyncTask<String, Integer, Void> {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("MailApp", "Could not send email", e);
+            AppLog.LogE("MailApp", "Could not send email" + e);
             ProgressDialogUtil.dismissProgress();
             mActivity.runOnUiThread(new Runnable() {
                 @Override

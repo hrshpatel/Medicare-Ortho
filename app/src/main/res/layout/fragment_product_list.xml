@@ -9,4 +9,12 @@
         android:id="@+id/frg_product_recycler_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <com.ortho.medicare.medicareortho.customviews.CustomTextView
+        android:id="@+id/frg_product_txt_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/no_categories_found" />
 </FrameLayout>

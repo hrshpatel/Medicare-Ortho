@@ -28,6 +28,7 @@ import com.ortho.medicare.medicareortho.customviews.CustomTextView;
 import com.ortho.medicare.medicareortho.fragments.AboutUsFragment;
 import com.ortho.medicare.medicareortho.fragments.ContactFragment;
 import com.ortho.medicare.medicareortho.fragments.InquiryFragment;
+import com.ortho.medicare.medicareortho.fragments.ProductListFragment;
 import com.ortho.medicare.medicareortho.utils.CommonUtil;
 
 import static android.view.Gravity.START;
@@ -101,6 +102,8 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(InquiryFragment.newInstance());
         } else if (id == R.id.nav_contact) {
             replaceFragment(ContactFragment.newInstance());
+        }else if (id==R.id.nav_products){
+            replaceFragment(ProductListFragment.newInstance());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -129,6 +132,7 @@ public class MainActivity extends AppCompatActivity
         mMainView = (CoordinatorLayout) findViewById(R.id.main_view);
 
         setDrawerLayout();
+        replaceFragment(ProductListFragment.newInstance());
     }
 
     /**

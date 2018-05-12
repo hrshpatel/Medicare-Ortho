@@ -194,7 +194,7 @@ public class ServiceHandler extends AsyncTask<Void, Void, Boolean> {
                     ProgressDialogUtil.dismissProgress();
                 }
 //                showCommonAlert(ErrorType, mActivity);
-                ToastUtils.makeText(mActivity, ErrorType, Toast.LENGTH_SHORT);
+                ToastUtils.makeText(mActivity, ErrorType);
                 if (delegate != null) {
                     delegate.processFinish(jsonArrayResponce, mRequestCode, success);
                 } else {
@@ -544,7 +544,7 @@ public class ServiceHandler extends AsyncTask<Void, Void, Boolean> {
             mActivity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    ToastUtils.makeText(mActivity, ErrorType, Toast.LENGTH_SHORT);
+                    ToastUtils.makeText(mActivity, ErrorType);
                 }
             });
         }
