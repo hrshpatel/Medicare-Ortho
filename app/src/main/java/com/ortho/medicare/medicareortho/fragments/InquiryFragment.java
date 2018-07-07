@@ -65,21 +65,23 @@ public class InquiryFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initializeView(View view) {
-        mToolBarTitle = (CustomTextView) getActivity().findViewById(R.id.toolbar_title);
+        getActivity().findViewById(R.id.toolbar_iv_search).setVisibility(View.GONE);
+
+        mToolBarTitle = getActivity().findViewById(R.id.toolbar_title);
 
         mToolBarTitle.setText(R.string.str_inquiry);
 
-        mEdtName = (TextInputEditText) view.findViewById(R.id.frg_inquiry_edt_name);
-        mEdtAddress = (TextInputEditText) view.findViewById(R.id.frg_inquiry_edt_address);
-        mEdtCity = (TextInputEditText) view.findViewById(R.id.frg_inquiry_edt_city);
-        mEdtCountry = (TextInputEditText) view.findViewById(R.id.frg_inquiry_edt_country);
-        mEdtEmail = (TextInputEditText) view.findViewById(R.id.frg_inquiry_edt_email);
-        mEdtPhone = (TextInputEditText) view.findViewById(R.id.frg_inquiry_edt_phone);
-        mEdtPinCode = (TextInputEditText) view.findViewById(R.id.frg_inquiry_edt_pin);
-        mEdtRemark = (TextInputEditText) view.findViewById(R.id.frg_inquiry_edt_remark);
-        mEdtState = (TextInputEditText) view.findViewById(R.id.frg_inquiry_edt_state);
+        mEdtName = view.findViewById(R.id.frg_inquiry_edt_name);
+        mEdtAddress = view.findViewById(R.id.frg_inquiry_edt_address);
+        mEdtCity = view.findViewById(R.id.frg_inquiry_edt_city);
+        mEdtCountry = view.findViewById(R.id.frg_inquiry_edt_country);
+        mEdtEmail = view.findViewById(R.id.frg_inquiry_edt_email);
+        mEdtPhone = view.findViewById(R.id.frg_inquiry_edt_phone);
+        mEdtPinCode = view.findViewById(R.id.frg_inquiry_edt_pin);
+        mEdtRemark = view.findViewById(R.id.frg_inquiry_edt_remark);
+        mEdtState = view.findViewById(R.id.frg_inquiry_edt_state);
 
-        mBtnSubmit = (Button) view.findViewById(R.id.frg_inquiry_btn_submit);
+        mBtnSubmit = view.findViewById(R.id.frg_inquiry_btn_submit);
 
     }
 

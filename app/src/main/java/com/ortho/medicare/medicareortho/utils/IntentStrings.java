@@ -6,4 +6,5 @@ package com.ortho.medicare.medicareortho.utils;
 
 public class IntentStrings {
     public static String CATEGORY_ID = "category_id";
+    public static String ITEM_ID = "ITEM_ID";
 }

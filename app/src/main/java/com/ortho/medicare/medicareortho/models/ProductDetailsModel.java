@@ -23,7 +23,7 @@ public class ProductDetailsModel {
     @SerializedName("product_id")
     private String productId;
     @SerializedName("id")
-    private int id;
+    private String id;
 
     public List<ProductDetails> getProductDetails() {
         return productDetails;
@@ -89,11 +89,11 @@ public class ProductDetailsModel {
         this.productId = productId;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

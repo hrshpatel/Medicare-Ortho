@@ -28,6 +28,7 @@ public class CategoryDetailActivity extends AppCompatActivity implements Service
     private CustomTextView mNoData;
     private ArrayList<ProductDetailsModel> mDetailsList;
     private CustomTextView mToolBarTitle;
+    private String mSelectedId = "-1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,16 @@ public class CategoryDetailActivity extends AppCompatActivity implements Service
         setContentView(R.layout.activity_category_detail);
 
         initialize();
+        if (getIntent().hasExtra(IntentStrings.ITEM_ID)) {
+            mSelectedId = getIntent().getStringExtra(IntentStrings.ITEM_ID);
+        } else {
+            mSelectedId = "-1";
+        }
+
         if (getIntent().hasExtra(IntentStrings.CATEGORY_ID)) {
             callProductCatApi(getIntent().getStringExtra(IntentStrings.CATEGORY_ID));
         }
+
     }
 
     @Override
@@ -96,6 +104,12 @@ public class CategoryDetailActivity extends AppCompatActivity implements Service
                         mRecyclerView.getAdapter().notifyDataSetChanged();
                         mRecyclerView.setVisibility(View.VISIBLE);
                         mNoData.setVisibility(View.GONE);
+                        for (int i = 0; i < mDetailsList.size(); i++) {
+                            if (mDetailsList.get(i).getId().equals(mSelectedId)) {
+                                mRecyclerView.smoothScrollToPosition(i);
+                                break;
+                            }
+                        }
                     } else {
                         mRecyclerView.setVisibility(View.GONE);
                         mNoData.setVisibility(View.VISIBLE);

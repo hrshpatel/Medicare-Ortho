@@ -2,6 +2,8 @@ package com.ortho.medicare.medicareortho.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class CategoryModel {
     @SerializedName("status")
     private String status;
@@ -17,6 +19,17 @@ public class CategoryModel {
     private String type;
     @SerializedName("id")
     private String id;
+
+    @SerializedName("product")
+    private List<ProductDetailsModel> mProductList;
+
+    public List<ProductDetailsModel> getmProductList() {
+        return mProductList;
+    }
+
+    public void setmProductList(List<ProductDetailsModel> mProductList) {
+        this.mProductList = mProductList;
+    }
 
     public String getStatus() {
         return status;

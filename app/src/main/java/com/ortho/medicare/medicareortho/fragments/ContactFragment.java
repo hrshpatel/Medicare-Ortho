@@ -64,14 +64,15 @@ public class ContactFragment extends Fragment implements ServiceHandler.GetRespo
     }
 
     private void initializeView(View view) {
+        getActivity().findViewById(R.id.toolbar_iv_search).setVisibility(View.GONE);
 
-        mTxtAddress = (CustomTextView) view.findViewById(R.id.frg_contact_txt_address);
-        mTxtPhone = (CustomTextView) view.findViewById(R.id.frg_contact_txt_phone);
-        mTxtMobile = (CustomTextView) view.findViewById(R.id.frg_contact_txt_mobile);
-        mTxtEmail = (CustomTextView) view.findViewById(R.id.frg_contact_txt_email);
-        mTxtWebsite = (CustomTextView) view.findViewById(R.id.frg_contact_txt_website);
+        mTxtAddress = view.findViewById(R.id.frg_contact_txt_address);
+        mTxtPhone = view.findViewById(R.id.frg_contact_txt_phone);
+        mTxtMobile = view.findViewById(R.id.frg_contact_txt_mobile);
+        mTxtEmail = view.findViewById(R.id.frg_contact_txt_email);
+        mTxtWebsite = view.findViewById(R.id.frg_contact_txt_website);
 
-        mToolBarTitle = (CustomTextView) getActivity().findViewById(R.id.toolbar_title);
+        mToolBarTitle = getActivity().findViewById(R.id.toolbar_title);
 
         mToolBarTitle.setText(R.string.str_contact_us);
     }

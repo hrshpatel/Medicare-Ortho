@@ -25,6 +25,14 @@
             style="@style/textView_titleBar"
             app:font_type="semi_bold" />
 
+        <com.ortho.medicare.medicareortho.customviews.CustomSearchView
+            android:id="@+id/toolbar_iv_search"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_10" />
+
     </android.support.v7.widget.Toolbar>
 
 

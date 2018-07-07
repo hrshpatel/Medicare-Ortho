@@ -5,7 +5,8 @@
     <color name="colorAccent">#81e4ed</color>
 
     <color name="full_transparent_white">#00FFFFFF</color>
-    <color name="bg_gray">#e8ebf1</color>
+    <color name="bg_gray">#FFFFFF</color>
+    <color name="card_bg_gray">#e8ebf1</color>
 
     <color name="btn_clr_blue">#00a7e8</color>
     <color name="text_color_red">#c01f1f</color>

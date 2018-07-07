@@ -45,13 +45,13 @@ public class Constant {
      * @since : 0.0.1
      */
     public static class Urls {
-        private static String BASE_URL = "http://aquaflexinks.in/medicareortho/api/";
+        //        private static String BASE_URL = "http://aquaflexinks.in/medicareortho/api/";
+        private static String BASE_URL = "http://medicareortho.com/api/";
 
         public static String ABOUT_US = BASE_URL + "about_us";
         public static String CONTACT_US = BASE_URL + "contact";
-        public static String PRODUCT_LIST = BASE_URL + "product_list";
+        public static String PRODUCT_LIST = BASE_URL + "product_description";
         public static String PRODUCT_DETAIL = BASE_URL + "product_detail";
         public static String QUALITY = BASE_URL + "quality";
     }
-
 }

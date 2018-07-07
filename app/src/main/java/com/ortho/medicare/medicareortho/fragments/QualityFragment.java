@@ -77,13 +77,15 @@ public class QualityFragment extends Fragment implements ServiceHandler.GetRespo
     }
 
     private void initialize(View view) {
-        mToolBarTitle = (CustomTextView) getActivity().findViewById(R.id.toolbar_title);
+        getActivity().findViewById(R.id.toolbar_iv_search).setVisibility(View.GONE);
+
+        mToolBarTitle = getActivity().findViewById(R.id.toolbar_title);
         mToolBarTitle.setText(R.string.str_quailty);
 
-        mTxtSubTitle = (CustomTextView) view.findViewById(R.id.frg_quality_txt_title);
-        mTxtDescription = (CustomTextView) view.findViewById(R.id.frg_quality_txt_desc);
+        mTxtSubTitle = view.findViewById(R.id.frg_quality_txt_title);
+        mTxtDescription = view.findViewById(R.id.frg_quality_txt_desc);
 
-        mPdfView = (PDFView) view.findViewById(R.id.frg_quality_pdf_view);
+        mPdfView = view.findViewById(R.id.frg_quality_pdf_view);
 
         callQualityApi();
     }

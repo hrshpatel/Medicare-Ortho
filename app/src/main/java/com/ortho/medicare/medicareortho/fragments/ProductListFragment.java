@@ -1,6 +1,7 @@
 package com.ortho.medicare.medicareortho.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,27 +9,36 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.ortho.medicare.medicareortho.R;
+import com.ortho.medicare.medicareortho.activities.CategoryDetailActivity;
 import com.ortho.medicare.medicareortho.adapters.ProductListAdapter;
+import com.ortho.medicare.medicareortho.adapters.SearchViewAdapter;
+import com.ortho.medicare.medicareortho.customviews.CustomSearchView;
 import com.ortho.medicare.medicareortho.customviews.CustomTextView;
 import com.ortho.medicare.medicareortho.models.CategoryModel;
+import com.ortho.medicare.medicareortho.models.ProductDetailsModel;
 import com.ortho.medicare.medicareortho.responsehandlers.AboutUsResponse;
 import com.ortho.medicare.medicareortho.responsehandlers.CategoryListResponse;
 import com.ortho.medicare.medicareortho.utils.AppLog;
 import com.ortho.medicare.medicareortho.utils.CommonUtil;
+import com.ortho.medicare.medicareortho.utils.IntentStrings;
 import com.ortho.medicare.medicareortho.utils.ToastUtils;
 import com.ortho.medicare.medicareortho.webserviceutils.Constant;
 import com.ortho.medicare.medicareortho.webserviceutils.RequestParams;
 import com.ortho.medicare.medicareortho.webserviceutils.ServiceHandler;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductListFragment extends Fragment implements ServiceHandler.GetResponse {
 
@@ -36,6 +46,8 @@ public class ProductListFragment extends Fragment implements ServiceHandler.GetR
     private ArrayList<CategoryModel> mCategoriesList;
     private CustomTextView mNoData;
     private CustomTextView mToolBarTitle;
+    private List<ProductDetailsModel> mProductDetailsList;
+    private CustomSearchView mSearchView;
 
     public ProductListFragment() {
         // Required empty public constructor
@@ -58,6 +70,7 @@ public class ProductListFragment extends Fragment implements ServiceHandler.GetR
         super.onViewCreated(view, savedInstanceState);
 
         initialize(view);
+        setListeners();
     }
 
     @Override
@@ -68,12 +81,16 @@ public class ProductListFragment extends Fragment implements ServiceHandler.GetR
     }
 
     private void initialize(View view) {
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.frg_product_recycler_list);
-        mNoData = (CustomTextView) view.findViewById(R.id.frg_product_txt_no_data);
+
+        mSearchView = getActivity().findViewById(R.id.toolbar_iv_search);
+        mSearchView.setVisibility(View.VISIBLE);
+
+        mRecyclerView = view.findViewById(R.id.frg_product_recycler_list);
+        mNoData = view.findViewById(R.id.frg_product_txt_no_data);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mToolBarTitle = (CustomTextView) getActivity().findViewById(R.id.toolbar_title);
+        mToolBarTitle = getActivity().findViewById(R.id.toolbar_title);
 
         mToolBarTitle.setText(R.string.str_products);
 
@@ -82,7 +99,44 @@ public class ProductListFragment extends Fragment implements ServiceHandler.GetR
         callProductCatApi();
     }
 
+    private void setListeners() {
+        mSearchView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                ProductDetailsModel detailsModel = ((SearchViewAdapter) mSearchView
+                        .getAdapter()).getCurrentItem(position);
+
+                Intent intent = new Intent(getActivity()
+                        , CategoryDetailActivity.class);
+                intent.putExtra(IntentStrings.ITEM_ID
+                        , "" + detailsModel.getId());
+                intent.putExtra(IntentStrings.CATEGORY_ID
+                        , "" + detailsModel.getProductId());
+                startActivity(intent);
+            }
+        });
+
+        mSearchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().findViewById(R.id.toolbar_title).setVisibility(View.GONE);
+            }
+        });
+
+        mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                getActivity().findViewById(R.id.toolbar_title).setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
+
+    }
+
     private void callProductCatApi() {
+        mProductDetailsList = new ArrayList<>();
+
         ServiceHandler serviceHandler = new ServiceHandler(getActivity(), Constant.Type.post
                 , Constant.Urls.PRODUCT_LIST, RequestParams.getAboutUsBody(getActivity())
                 , true, 0);
@@ -106,6 +160,13 @@ public class ProductListFragment extends Fragment implements ServiceHandler.GetR
                         mRecyclerView.getAdapter().notifyDataSetChanged();
                         mRecyclerView.setVisibility(View.VISIBLE);
                         mNoData.setVisibility(View.GONE);
+                        for (int i = 0; i < mCategoriesList.size(); i++) {
+                            if (mCategoriesList.get(i).getmProductList() != null
+                                    && mCategoriesList.get(i).getmProductList().size() > 0) {
+                                mProductDetailsList.addAll(mCategoriesList.get(i)
+                                        .getmProductList());
+                            }
+                        }
                     } else {
                         mRecyclerView.setVisibility(View.GONE);
                         mNoData.setVisibility(View.VISIBLE);
@@ -114,6 +175,11 @@ public class ProductListFragment extends Fragment implements ServiceHandler.GetR
                     ToastUtils.makeText(getActivity(), "" + listResponse.getMsg());
                 }
             }
+
+            SearchViewAdapter adapter = new SearchViewAdapter(getActivity()
+                    , android.R.layout.simple_expandable_list_item_1, mProductDetailsList);
+
+            mSearchView.setAdapter(adapter);
         } catch (Exception e) {
             e.printStackTrace();
             ToastUtils.makeText(getActivity(), getString(R.string.str_something_went_worng));

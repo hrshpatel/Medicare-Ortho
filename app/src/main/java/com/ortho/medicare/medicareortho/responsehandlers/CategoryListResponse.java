@@ -2,6 +2,7 @@ package com.ortho.medicare.medicareortho.responsehandlers;
 
 import com.google.gson.annotations.SerializedName;
 import com.ortho.medicare.medicareortho.models.CategoryModel;
+import com.ortho.medicare.medicareortho.models.ProductDetailsModel;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class CategoryListResponse {
 
     @SerializedName("data")
     private List<CategoryModel> data;
+
     @SerializedName("msg")
     private String msg;
     @SerializedName("response")

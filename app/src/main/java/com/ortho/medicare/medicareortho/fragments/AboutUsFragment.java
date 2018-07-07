@@ -60,10 +60,12 @@ public class AboutUsFragment extends Fragment implements ServiceHandler.GetRespo
     }
 
     private void initializeView(View view) {
-        mTxtOverview = (CustomTextView) view.findViewById(R.id.frg_about_txt_overview);
-        mTxtDescription = (CustomTextView) view.findViewById(R.id.frg_about_txt_desc);
 
-        mToolBarTitle = (CustomTextView) getActivity().findViewById(R.id.toolbar_title);
+        getActivity().findViewById(R.id.toolbar_iv_search).setVisibility(View.GONE);
+        mTxtOverview = view.findViewById(R.id.frg_about_txt_overview);
+        mTxtDescription = view.findViewById(R.id.frg_about_txt_desc);
+
+        mToolBarTitle = getActivity().findViewById(R.id.toolbar_title);
 
         mToolBarTitle.setText(R.string.str_about_us);
     }
